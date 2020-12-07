@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Predict</title>
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}">
+
+	<script type="text/javascript" src="{{ url_for('static',filename='js/main.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.3.1.slim.min.js')}}"></script>
+</head>
+<body>
+	<div class="container py-5">
+
+    <!-- For demo purpose -->
+    <header class="text-white text-center">
+        <h1 class="display-4">Here Is Your Answer To The Question</h1>
+    </header>
+
+<form action='/predict' method="POST">
+	<!-- Image Upload Section -->
+    <div class="row py-4">
+        <div class="col-lg-6 mx-auto">
+            <!-- Uploaded image area-->
+            <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box below.</p>
+            <div class="image-area mt-4"><img src="{{filepath}}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+        </div>
+    </div>
+    <!-- Question Section -->
+    <div class="row py-4">
+        <div class="col-lg-6 mx-auto">
+            <h3 style="margin-left: 15px; color: #3a3f4d;">Your Question Is...</h3>
+               <h4>{{question}}</h4> 
+            </div>
+    </div>
+
+    <!-- Predict Button -->
+    <div class="row py-4">
+        <div class="col-lg-6 mx-auto">
+            {% for label in labels %} 
+            <h3 style="margin: auto;">
+                {{label}}
+            </h3>
+            {% endfor %}
+        </div>
+    </div>
+
+</form>
+</div>
+</body>
+</html>
